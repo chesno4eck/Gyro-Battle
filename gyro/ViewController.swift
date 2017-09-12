@@ -17,12 +17,28 @@ class ViewController: UIViewController {
 
 	@IBOutlet var image: UIImageView!
 	@IBOutlet var staticImage: UIImageView!
+	@IBOutlet var startButton: UIButton!
+	@IBOutlet var restartButton: UIButton!
+	@IBOutlet var timerLabel: UILabel!
+	
+	var timer = Timer()
+	var seconds = 0
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		staticImage.transform = CGAffineTransform(rotationAngle: angles[0])
+		staticImage.isHidden = true
+		image.isHidden = true
+		startButton.transform = CGAffineTransform(rotationAngle: 3.1415/2.0)
+		timerLabel.transform = CGAffineTransform(rotationAngle: 3.1415/2.0)
+		
     }
-    
+	
+	func updateTimer() {
+		seconds += 1
+		timerLabel.text = "\(seconds)"
+	}
+
+	
     override func viewDidAppear(_ animated: Bool) {
         motionManager.accelerometerUpdateInterval = 0.02
 		var count = 0
@@ -32,6 +48,7 @@ class ViewController: UIViewController {
 				if fabsf(Float(angle) - Float(self.angles[self.i])) < 0.06 {
 					count += 1
 					if count > 35 {
+						self.i += 1
 						self.next(self)
 						count = 0
 					}
@@ -40,25 +57,57 @@ class ViewController: UIViewController {
 				}
 				UIView.animate(withDuration: 0.1, animations: {
 					self.image.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
+					self.timerLabel.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
 				})
 			}
 		}
     }
 	
+	@IBAction func start(_ sender: Any) {
+		startButton.isHidden = true
+		staticImage.isHidden = false
+		image.isHidden = false
+		timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,   selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+		self.next(self)
+	}
+	
+	@IBAction func restart(_ sender: Any) {
+		seconds = 0
+		timer = Timer.scheduledTimer(timeInterval: 0.1, target: self,   selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+		restartButton.isHidden = true
+		i = 0
+		self.next(self)
+	}
+	
 	var i = 0
 	@IBAction func next(_ sender: Any) {
-		i += 1
-		if i == 1 {
+		
+		if i == 0 {
+			image.image = #imageLiteral(resourceName: "treangle")
+			staticImage.image = #imageLiteral(resourceName: "treangle")
+		} else if i == 1 {
 			image.image = #imageLiteral(resourceName: "apple")
 			staticImage.image = #imageLiteral(resourceName: "apple")
-		} else if i == 2{
+		} else if i == 2 {
 			image.image = #imageLiteral(resourceName: "telegram")
 			staticImage.image = #imageLiteral(resourceName: "telegram")
-		} else if i == 3{
+		} else if i == 3 {
+			image.image = #imageLiteral(resourceName: "predator")
+			staticImage.image = #imageLiteral(resourceName: "predator")
+		} else if i == 4 {
+			image.image = #imageLiteral(resourceName: "yin")
+			staticImage.image = #imageLiteral(resourceName: "yin")
+		} else if i == 5 {
+			image.image = #imageLiteral(resourceName: "slack")
+			staticImage.image = #imageLiteral(resourceName: "slack")
+		} else if i == 6 {
 			image.image = #imageLiteral(resourceName: "dollar")
 			staticImage.image = #imageLiteral(resourceName: "dollar")
-		} else if i == 4{
-			Alerts.showOkAlert(on: self, title: "Congratulations", text: "This game is yours")
+		} else if i == 7 {
+			Alerts.showOkAlert(on: self, title: "Congratulations", text: "Your score is \(seconds)")
+			timer.invalidate()
+			
+			restartButton.isHidden = false
 		}
 
 		staticImage.transform = CGAffineTransform(rotationAngle: angles[i])
