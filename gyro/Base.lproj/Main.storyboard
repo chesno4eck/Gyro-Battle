@@ -24,23 +24,28 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLO-oz-QuG">
                                 <rect key="frame" x="16" y="597" width="50" height="50"/>
-                                <color key="backgroundColor" red="0.97647058959999999" green="0.067871810209999994" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.2274509804" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="NlL-Hg-0lB"/>
                                     <constraint firstAttribute="height" constant="50" id="gOc-Ab-56F"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="next:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZNd-qh-xlo"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="8rV-6S-ua2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treangle" translatesAutoresizingMaskIntoConstraints="NO" id="8rV-6S-ua2">
                                 <rect key="frame" x="87" y="233" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="3a4-RR-0Kb"/>
                                     <constraint firstAttribute="height" constant="200" id="Ah7-Uv-xXr"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="4XW-Mq-qVw">
+                            <imageView userInteractionEnabled="NO" alpha="0.34999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="treangle" translatesAutoresizingMaskIntoConstraints="NO" id="4XW-Mq-qVw">
                                 <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="HB7-Zs-AUe"/>
@@ -60,6 +65,7 @@
                     </view>
                     <connections>
                         <outlet property="image" destination="8rV-6S-ua2" id="Rrr-bf-nPX"/>
+                        <outlet property="staticImage" destination="4XW-Mq-qVw" id="Myo-w6-lPv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -67,6 +73,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="1" width="1200" height="1067"/>
+        <image name="treangle" width="256" height="256"/>
     </resources>
 </document>
