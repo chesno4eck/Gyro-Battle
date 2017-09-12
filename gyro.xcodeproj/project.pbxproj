@@ -57,14 +57,30 @@
 			isa = PBXGroup;
 			children = (
 				DE059A341DFD991C00D19D17 /* AppDelegate.swift */,
-				DE059A361DFD991C00D19D17 /* ViewController.swift */,
-				F4333DC11F66933100708D68 /* ShapesGenerator.swift */,
+				F4333DC41F67DF5D00708D68 /* Connection */,
+				F4333DC31F67DF4300708D68 /* UI */,
 				DE059A381DFD991C00D19D17 /* Main.storyboard */,
 				DE059A3B1DFD991C00D19D17 /* Assets.xcassets */,
 				DE059A3D1DFD991C00D19D17 /* LaunchScreen.storyboard */,
 				DE059A401DFD991C00D19D17 /* Info.plist */,
 			);
 			path = gyro;
+			sourceTree = "<group>";
+		};
+		F4333DC31F67DF4300708D68 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F4333DC11F66933100708D68 /* ShapesGenerator.swift */,
+				DE059A361DFD991C00D19D17 /* ViewController.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		F4333DC41F67DF5D00708D68 /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Connection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
